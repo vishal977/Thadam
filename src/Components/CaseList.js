@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+import ViewCase from './ViewCase';
+import { link } from 'fs';
+import {Link} from 'react-router-dom';
 class CaseList extends Component{
 
     state = {
@@ -13,7 +15,8 @@ class CaseList extends Component{
             crimeId: 102,
             offCode: "IS701",
             location: "Avadi"}
-        ]
+        ],
+        getDetailsOf: null
       }
 
     render() {
@@ -22,14 +25,16 @@ class CaseList extends Component{
         for (var key in details) {
             arr.push(details[key]);
         }
-        console.log(arr);
+
         const crimes = arr.length ?
         (
             arr.map(arr => 
             {
-            return ( 
-                <div className = "card">
-                <div className="row ">
+                var toLink = "viewcase/" + arr.crimeId;
+            return (
+                <Link to = {toLink}>
+                <div className = "card" key = {arr.crimeId}>
+                <div className="row" >
                         <div className="col s4 black-text  ">
                             <h5>{arr.crimeId}</h5>
                         </div>
@@ -41,6 +46,7 @@ class CaseList extends Component{
                         </div>
                     </div>
                 </div>
+                </Link>
                 )
             })
         ):
@@ -56,6 +62,15 @@ class CaseList extends Component{
              </div>
          )
     }
+    clicked = (clicked) =>
+    {
+        this.setState({
+            getDetailsOf : clicked
+        })
+
+    }   
 }
+
+
 
 export default CaseList;

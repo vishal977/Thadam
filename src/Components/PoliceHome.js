@@ -2,9 +2,19 @@ import React, { Component } from 'react';
 import '../CSS/policeHome.css';
 import CaseList from './CaseList';
 
+
 class PoliceHome extends Component {
     render() {
         return(
+            <div>
+            <nav className="nav-wrapper grey darken-4 navbar">
+            <div className="container">
+            <b><a href="/" className="brand-logo">Thadam</a></b>
+               <ul className = "right">
+               </ul>
+            </div>
+            
+        </nav>
             <div className = "container homeList ">
                 <div className="card blue darken-1 headers">
                     <div className="row ">
@@ -20,6 +30,7 @@ class PoliceHome extends Component {
                     </div>
                 </div>
                 <CaseList/>
+            </div>
             </div>
         )
     }
